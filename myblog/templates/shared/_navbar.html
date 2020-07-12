@@ -7,20 +7,23 @@
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href='{% url "main" %}'>home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">introduction</a>
+        <a class="nav-link" href='{% url "introduction:profile" %}'>introduction</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">롤</a>
+        <a class="nav-link" href="https://www.op.gg/summoner/userName=%EB%B6%95%EC%96%B4%EC%97%91%EA%B8%B0%EC%8A%A4"  target="_blank">롤</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">이클래스</a>
+        <a class="nav-link" href="https://www.youtube.com/" target="_blank">유튜브</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://eclass.dongguk.edu/index.jsp">이클래스</a>
       </li>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">스케줄표</a>
+        <a class="nav-link" href='{% url "cld:calendar" %}'>스케줄표</a>
       </li>
     </ul>
     
