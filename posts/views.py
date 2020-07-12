@@ -11,7 +11,7 @@ def create(request):
         title = request.POST.get('title')
         content = request.POST.get('content')
         Post.objects.create(title=title, content=content)
-        return redirect('main')
+        return redirect('posts:main')
 
 def main(request):
     posts = Post.objects.all()

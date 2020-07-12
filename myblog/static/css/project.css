@@ -101,12 +101,9 @@ h5 {
     text-align: center;
 }
 
-h2 { 
-    text-align: center;
-}
 
 .kmg {
-    background-color: powderblue;
+    background-color: rgb(20, 22, 22);
 }
 
 .card-text{
