@@ -1,17 +1,18 @@
 h1 {
-    color: orange;
+    color: powderblue;
+    font-weight: bold;
+    text-align:center;
 }
 
 h2 {
     color: beige;
 }
+
 .container{
     display: flex;
-    justify-content: space-between;
-
 }
 
-.card{
+.cardd{
     flex-grow: 1;
 }
 
@@ -94,18 +95,26 @@ body {font-family: Verdana, sans-serif;}
 .hi {
     background-image : url('/static/images/mh.png');
     width: 100%;
-     height: 700px;
-     font-size: 100px;
-     text-align: center;
-     color: rgb(32, 84, 179);
-     background-repeat: no-repeat;
-     background-size: cover;
-     padding-top:0px;
-     margin-top: 0px;
-     margin-bottom:0;
-     padding-bottom:0;
+    height: 800px;
+    font-size: 100px;
+    text-align: center;
+    color: rgb(32, 84, 179);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top:0px;
+    margin-top: 0px;
+    margin-bottom:20;
+    padding-bottom:0;
 }
 
 h5 { 
+    text-align: center;
+}
+
+.kmg {
+    background-color: powderblue;
+}
+
+.card-text{
     text-align: center;
 }
