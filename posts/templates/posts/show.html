@@ -6,4 +6,13 @@
 <h5 style = "font-weight: bold;">이름 : {{ post.title }} </h5><br>
 <h5 style = "font-weight: bold;">메세지 : {{ post.content }} </h5><br>
 <h5 style = "font-weight: bold;">작성 시각 : {{ post.created_at }} </h5><br>
+<div class = "kmg123123" style = "text-align: center;">
+    <a href = "{% url 'posts:update' post.pk %}">수정하기</a>
+    <a href = "{% url 'posts:delete' post.pk %}">삭제하기</a>
+</div>
+    {% if post.image %}
+        <br>
+        <img src ="{{ post.image.url }}" style="height: 50%; width:50%; margin-left:auto; margin-right:auto; display: block;">
+    {%  endif %}
+
 {% endblock %}

@@ -2,8 +2,8 @@
 {% load static %}
 {% block content %}
 <div class="container2">
-    <h1>메세지 보내기</h1>
-    <form action="{% url 'posts:create' %}" method="POST">
+    <h1 style = "font-weight: bold; color: rgb(32, 84, 179);">메세지 보내기</h1>
+    <form action="{% url 'posts:create' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="form-group">
     <label>이름</label>
@@ -14,11 +14,12 @@
     <textarea class="form-control" name="content"></textarea>
     </div>
     <input type="submit" value="글 작성" class="btn btn-outline-primary">
+    <input type="file" name ="image">
     </form>
 </div>
     <div class="container1">
         <br><br><br><br>
-        <h1>메세지 함</h1>
+        <h1 style = "font-weight: bold; color: rgb(32, 84, 179);">메세지 함</h1>
         <div class="row">
             {% for post in posts %}
                 <div class="col-md-4 col-12">
@@ -26,8 +27,12 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ post.title }}</h5>
                             <p class="card-text">{{ post.content }}</p>
+                            {% if post.image %}
+                                <br>
+                                <img src ="{{ post.image.url }}" style="height: 60px; width:50px;">
+                            {%  endif %}
                             <p>{{ post.created_at }}</p>
-                            <a href="{% url 'posts:show' post.pk %}" class="btn btn-primary">detail</a>
+                            <a href="{% url 'posts:show' post.pk %}" class="btn btn-primary">자세히</a>
                         </div>
                     </div>
                 </div>
