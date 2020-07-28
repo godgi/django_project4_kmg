@@ -3,12 +3,19 @@
 <br><br><br><br>
 <h2 style = "color: powderblue; font-weight: bold; text-align: center;">상세보기 페이지</h2>
 <br><br><br><br>
-<h5 style = "font-weight: bold;">이름 : {{ post.title }} </h5><br>
+<h5 style = "font-weight: bold;">글 제목 : {{ post.title }} </h5><br>
+{% if post.user %}
+    <h5 style = "font-weight: bold;">이름 : {{ post.user }} </h5><br>
+{% else %}
+    <h5 style = "font-weight: bold;">이름: 알 수 없음 </h5><br>
+{% endif %}
 <h5 style = "font-weight: bold;">메세지 : {{ post.content }} </h5><br>
 <h5 style = "font-weight: bold;">작성 시각 : {{ post.created_at }} </h5><br>
 <div class = "kmg123123" style = "text-align: center;">
-    <a href = "{% url 'posts:update' post.pk %}">수정하기</a>
-    <a href = "{% url 'posts:delete' post.pk %}">삭제하기</a>
+    {% if user == post.user %}
+        <a href = "{% url 'posts:update' post.pk %}" class="btn btn-primary">수정하기</a>
+        <a href = "{% url 'posts:delete' post.pk %}" class="btn btn-danger">삭제하기</a>
+    {% endif %}
 </div>
     {% if post.image %}
         <br>

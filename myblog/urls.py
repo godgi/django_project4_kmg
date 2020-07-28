@@ -25,6 +25,7 @@ urlpatterns = [
     path('', views.main, name="main"),
     path('posts/', include('posts.urls')),
     path('calendar/', include('cld.urls')),
+    path('accounts/', include('allauth.urls')),
 ]
 
 
