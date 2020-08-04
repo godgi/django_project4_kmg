@@ -11,6 +11,7 @@
 {% endif %}
 <h5 style = "font-weight: bold;">메세지 : {{ post.content }} </h5><br>
 <h5 style = "font-weight: bold;">작성 시각 : {{ post.created_at }} </h5><br>
+<h5 style = "font-weight: bold;">조회수: {{ post.view_count }}</h5>
 <div class = "kmg123123" style = "text-align: center;">
     {% if user == post.user %}
         <a href = "{% url 'posts:update' post.pk %}" class="btn btn-primary">수정하기</a>
