@@ -34,6 +34,7 @@
                                     <img src ="{{ post.image.url }}" style="height: 60px; width:50px;">
                                 {%  endif %}
                                 <p>{{ post.created_at }}</p>
+                                <p> 조회수: {{ post.view_count }}</p>
                                 <a href="{% url 'posts:show' post.pk %}" class="btn btn-primary">자세히</a>
                             </div>
                         </div>

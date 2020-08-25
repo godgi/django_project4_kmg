@@ -12,15 +12,42 @@
 <h5 style = "font-weight: bold;">메세지 : {{ post.content }} </h5><br>
 <h5 style = "font-weight: bold;">작성 시각 : {{ post.created_at }} </h5><br>
 <h5 style = "font-weight: bold;">조회수: {{ post.view_count }}</h5>
+    {% if post.image %}
+        <br>
+        <img src ="{{ post.image.url }}" style="height: 50%; width:50%; margin-left:auto; margin-right:auto; display: block;">
+    {%  endif %}
 <div class = "kmg123123" style = "text-align: center;">
     {% if user == post.user %}
         <a href = "{% url 'posts:update' post.pk %}" class="btn btn-primary">수정하기</a>
         <a href = "{% url 'posts:delete' post.pk %}" class="btn btn-danger">삭제하기</a>
     {% endif %}
 </div>
-    {% if post.image %}
-        <br>
-        <img src ="{{ post.image.url }}" style="height: 50%; width:50%; margin-left:auto; margin-right:auto; display: block;">
-    {%  endif %}
+
+<div class="container mt-5">
+    <form class="form-row" action="{% url 'posts:create_comment' post.id %}" method="POST">
+        {% csrf_token %}
+        <textarea class="form-control col-11 mr-2" name="content" placeholder="댓글 내용 입력..."></textarea>
+        <input type="submit" class="btn btn-primary" value="확인">
+    </form>
+</div>
+
+<div class="container mt-t mb-5">
+    {% for comment in comments %}
+    <div class="card">
+        <div class="card-body">
+            {% if comment.writer.username == 'user' %}
+            <b>{{ comment.writer.last_name }}{{ comment.writer.first_name}}</b>
+            {% else %}
+            <b>{{ comment.writer }}</b>{% endif %} : {{ comment.content }}<br>
+            <small>{{ comment.created_at }}</small>
+            <br>
+            {% if user == comment.writer %}
+            <a href="{% url 'posts:update_comment' comment.pk %}" class="btn btn-primary">수정하기</a>
+            <a href="{% url 'posts:delete_comment' comment.pk %}" class="btn btn-primary">삭제하기</a>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
 
 {% endblock %}

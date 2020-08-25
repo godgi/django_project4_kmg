@@ -1,8 +1,4 @@
-.container{
-    display: flex;
-}
-
-.cardd{
+.card{
     flex-grow: 1;
 }
 
