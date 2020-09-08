@@ -12,10 +12,35 @@
 <h5 style = "font-weight: bold;">메세지 : {{ post.content }} </h5><br>
 <h5 style = "font-weight: bold;">작성 시각 : {{ post.created_at }} </h5><br>
 <h5 style = "font-weight: bold;">조회수: {{ post.view_count }}</h5>
-    {% if post.image %}
-        <br>
-        <img src ="{{ post.image.url }}" style="height: 50%; width:50%; margin-left:auto; margin-right:auto; display: block;">
-    {%  endif %}
+
+{% if post.image %}
+    <br>
+    <img src ="{{ post.image.url }}" style="height: 50%; width:50%; margin-left:auto; margin-right:auto; display: block;">
+{%  endif %}
+
+<div class = "container mt-5">
+    <a href="{% url 'posts:post_like' post.id %}?redirect_to=show">
+        {% if user in post.like_user_set.all %}
+            <i class="fas fa-heart">{{ post.like_count }}개</i>
+        {% else %}
+            <i class="far fa-heart">{{ post.like_count }}개</i>
+        {% endif %}
+    </a>
+</div>
+
+<div class = "container mt-5">
+    {% for like_user in post.like_user_set.all %}
+        {% if like_user.username == 'user' %}
+            <p>{{ like_user.last_name }}{{ like_user.first_name}}</p>
+        {% else %}
+            <p>{{ like_user.username }}</p>
+        {% endif %}
+    {% endfor %}
+</div>
+
+
+
+
 <div class = "kmg123123" style = "text-align: center;">
     {% if user == post.user %}
         <a href = "{% url 'posts:update' post.pk %}" class="btn btn-primary">수정하기</a>
